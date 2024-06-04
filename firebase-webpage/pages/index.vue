@@ -1,49 +1,38 @@
+<!-- pages/index.vue -->
+
 <template>
     <div>
-        <h1>Firebase Auth with Nuxt 3</h1>
+        <h1>Home</h1>
         <div v-if="user">
             <p>Welcome, {{ user.email }}</p>
             <button @click="handleLogout">Logout</button>
         </div>
         <div v-else>
-            <input v-model="email" type="email" placeholder="Email" />
-            <input v-model="password" type="password" placeholder="Password" />
-            <button @click="handleRegister">Register</button>
-            <button @click="handleLogin">Login</button>
+            <p>You are not logged in. <a href="/login">Login</a> or <a href="/register">Register</a>.</p>
         </div>
     </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { register, login, logout } from '~/services/AuthService';
+import { ref, onMounted } from 'vue';
+import { logout } from '~/services/AuthService';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useRouter } from 'vue-router';
 
-const email = ref('');
-const password = ref('');
 const user = ref(null);
-
-const handleRegister = async () => {
-    try {
-        user.value = await register(email.value, password.value);
-    } catch (error) {
-        alert(error.message);
-    }
-};
-
-const handleLogin = async () => {
-    try {
-        user.value = await login(email.value, password.value);
-    } catch (error) {
-        alert(error.message);
-    }
-};
+const auth = getAuth();
+const router = useRouter();
 
 const handleLogout = async () => {
-    try {
-        await logout();
-        user.value = null;
-    } catch (error) {
-        alert(error.message);
-    }
+    await logout();
+    user.value = null;
 };
+
+onMounted(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+        user.value = currentUser;
+    });
+});
 </script>
+
+<style></style>
