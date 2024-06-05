@@ -50,7 +50,6 @@
 
 
 
-
     <div>
         <form @submit.prevent="handleRegister">
             <input v-model="email" type="email" placeholder="Email" required />

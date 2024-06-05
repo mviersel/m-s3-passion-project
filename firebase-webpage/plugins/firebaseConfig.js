@@ -1,8 +1,9 @@
 import { defineNuxtPlugin } from '#app'
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
-export default defineNuxtPlugin(() => {
+export default defineNuxtPlugin((nuxtApp) => {
     const firebaseConfig = {
         apiKey: "AIzaSyBlkhjVEhbduHk3Q2XL7fAHysF6RIUE4F8",
         authDomain: "passion-project-6a802.firebaseapp.com",
@@ -15,10 +16,8 @@ export default defineNuxtPlugin(() => {
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const firestore = getFirestore(app);
 
-    return {
-        provide: {
-            auth
-        }
-    }
+    nuxtApp.provide('auth', auth);
+    nuxtApp.provide('firestore', firestore);
 });
