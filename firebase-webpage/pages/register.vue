@@ -1,7 +1,6 @@
 <template>
     <div>
         <RegisterForm />
-        <p>Already have an account? <a href="/login">Login here</a></p>
     </div>
 </template>
 
