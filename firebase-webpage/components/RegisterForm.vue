@@ -69,4 +69,9 @@ const handleRegister = async () => {
         error.value = err.message;
     }
 };
+
+// auth.createUserWithEmailAndPassword(email, password).then(cred => {
+//     return db.collection('users').doc(cred.user.uid).set({
+//       bio: signupForm['signup-bio'].value
+//     });
 </script>
