@@ -2,8 +2,8 @@
     <header
         class='flex border-b py-4 px-4 sm:px-10 bg-gray-900 font-sans min-h-[70px] tracking-wide relative z-50 text-white'>
         <div class='flex flex-wrap items-center gap-4 w-full'>
-            <NuxtLink to="/"><img src="https://readymadeui.com/readymadeui.svg" alt="logo" class='w-36' /></NuxtLink>
-            <div>
+            <NuxtLink to="/"><img src="../assets/img/Spulleke-logo-transparent.png" alt="logo" class='w-40' /></NuxtLink>
+            <div class="pl-8">
                 <ul class='lg:flex lg:gap-x-8 max-lg:space-y-2'>
                     <li class='mb-6 hidden max-lg:block'>
                         <a href="javascript:void(0)"><img src="https://readymadeui.com/readymadeui.svg" alt="logo"
